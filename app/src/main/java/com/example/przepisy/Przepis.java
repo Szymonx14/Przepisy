@@ -25,11 +25,11 @@ public class Przepis {
     }
 
     public Przepis(String opis, String skladniki, int idObrazka, String kategoria, String nazwaPrzepisu) {
-        this.opis = opis;
-        this.skladniki = skladniki;
-        this.idObrazka = idObrazka;
-        this.kategoria = kategoria;
         this.nazwaPrzepisu = nazwaPrzepisu;
+        this.kategoria = kategoria;
+        this.idObrazka = idObrazka;
+        this.skladniki = skladniki;
+        this.opis = opis;
     }
 
     public String getNazwaPrzepisu() {
