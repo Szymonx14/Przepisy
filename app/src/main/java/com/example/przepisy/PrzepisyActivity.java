@@ -1,6 +1,8 @@
 package com.example.przepisy;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class PrzepisyActivity extends AppCompatActivity {
+
+    TextView textViewNazwaPrzepisu, textViewSkladniki, textViewOpis;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +25,15 @@ public class PrzepisyActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        int idPrzepisuDoWyswietlenia = getIntent().getIntExtra("ID", 0);
+        Przepis przepis = RepozytoriumPrzepisow.zwrocPrzepisoId(idPrzepisuDoWyswietlenia);
+        textViewNazwaPrzepisu = findViewById(R.id.textView2);
+        textViewSkladniki = findViewById(R.id.textViewSkladniki);
+        textViewOpis = findViewById(R.id.textViewOpis);
+        wyswietlPrzepis(przepis);
+    }
+
+    private void wyswietlPrzepis(Przepis przepis){
+        textViewNazwaPrzepisu.setText(przepis.getNazwaPrzepisu());
     }
 }

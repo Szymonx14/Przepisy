@@ -1,6 +1,9 @@
 package com.example.przepisy;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -47,5 +50,19 @@ public class listaPrzepisowActivity extends AppCompatActivity {
            4. przypisac ArrayAdpater do ListView
         */
         listView.setAdapter(arrayAdapter);
+
+        listView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Przepis przepis = przepisy.get(i);
+                        Intent intent = new Intent(listaPrzepisowActivity.this, PrzepisyActivity.class);
+                        int idTegoPrzepisu = przepis.getIdPrzepisy();
+                        intent.putExtra("ID",idTegoPrzepisu);
+
+                        startActivity(intent);
+                    }
+                }
+        );
     }
 }
